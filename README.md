@@ -20,7 +20,8 @@ Al recibirlo se valida que lo entregado por el solicitante esté correcto. En un
 
 ## 
 
-```
+```mermaid
+
 classDiagram
     class Tramite
     <<interface>> Tramite
