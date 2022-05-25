@@ -18,21 +18,29 @@ Tenemos un objeto mesa de entradas q recibe un documento o una carpeta y nos dev
 
 Al recibirlo se valida que lo entregado por el solicitante esté correcto. En un caso el documento individual y en el caso de los expedientes se validan los elementos que lo componen uno a uno, y si todos están bien se considera válido el expediente. Pensar que objetos usaríamos, que estructura nos conviene.
 
-## 
+## Solución propuesta
+
+Utilizamos el patrón composite.
+
+## Diagrama de clase sencillo del Composite
 
 ```mermaid
 
 classDiagram
     class Tramite
     <<interface>> Tramite
-    +id
-    +esValido()
+    Tramite: +int id
+    Tramite: +esValido()
     
     Tramite <|-- Documento
     Tramite <|-- Expediente
+    Expediente *-- Tramite
+
     Documento : +boolean firmado
+    Documento : +esValido()
     Expediente : + Tramite[] tramites
-    Expediente --> "many" Tramite : Se compone
+    Expediente : + add(Tramite)
+    Expediente : +esValido()
 
 ```
      
